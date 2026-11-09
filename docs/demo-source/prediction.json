@@ -1,0 +1,49 @@
+{
+  "sample_id": "label",
+  "input_sha256": "a2530dae07af392fef7c0cb95c668080e18c636a37891b885d13361ff995889e",
+  "model_id": "ppocr-v5-en-wide-v2",
+  "model_fingerprint": "858f4721e571f89d79a04ecff2ab8df05638464d8fcbc14472d7f33318d936c5",
+  "raw_text": "DX140765",
+  "text": "DX140765",
+  "format_decoded": false,
+  "score": 0.99987,
+  "candidate_count": 1,
+  "candidates": [
+    {
+      "polygon": [
+        [
+          205.0,
+          126.0
+        ],
+        [
+          434.0,
+          134.0
+        ],
+        [
+          433.0,
+          187.0
+        ],
+        [
+          203.0,
+          179.0
+        ]
+      ],
+      "raw_text": "DX140765",
+      "score": 0.99987
+    }
+  ],
+  "format_valid": true,
+  "catalog_status": "active",
+  "item_code": "VP-01254",
+  "catalog_item": {
+    "batch": "DEMO-013",
+    "item_code": "VP-01254",
+    "name": "Control module 7",
+    "serial": "DX140765",
+    "status": "active"
+  },
+  "input": "examples/images/label.png",
+  "source_split": "development",
+  "synthetic": true,
+  "source": "Actual marking-ocr predict output; presentation metadata subset"
+}

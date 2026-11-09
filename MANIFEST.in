@@ -1,6 +1,6 @@
 include README.md LICENSE THIRD_PARTY_NOTICES.md uv.lock
 recursive-include examples *.png *.csv *.json
-recursive-include docs *.png *.txt *.md
+recursive-include docs *.png *.txt *.md *.svg *.json *.py
 recursive-include reports *.json *.csv
 recursive-include licenses *
 global-exclude new-cli-*.json

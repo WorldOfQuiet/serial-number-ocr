@@ -1,12 +1,18 @@
-# marking-ocr
+# Serial number OCR
 
-Read printed serial numbers with local ONNX models. The command accepts images or
+`marking-ocr` reads printed serial numbers with local ONNX models. The command accepts images or
 a manifest, writes one CSV row per image, and can save detected regions, crops and
 overlays. Catalog lookup and acceptance thresholds are separate from recognition.
 
 The serial format is two uppercase Latin letters followed by six digits, such as
 `AB001234`. The repository includes detector and recognizer weights, five example
 images, a small catalog, and a reproducible synthetic evaluation generator.
+
+![Recognition trace from a synthetic label through its detected region and crop to the recorded serial and catalog match](docs/images/recognition-demo.png)
+
+This figure uses actual CLI output from a synthetic development example. The raw
+text, polygon and catalog values are preserved. [Full SVG](docs/images/recognition-demo.svg)
+and [source prediction](docs/demo-source/prediction.json) are included.
 
 ## Install
 
@@ -274,9 +280,10 @@ format-assisted selection, ambiguous candidates, calibration leakage checks and
 deterministic rendering. The checked-in example overlays come from actual CLI
 inference with `--artifacts-dir`.
 
-![Detected region and raw OCR text](docs/images/label-overlay.png)
-
-![Two detected candidates remain ambiguous](docs/images/ambiguous-overlay.png)
+An [additional two-number example](docs/images/ambiguous-overlay.png) shows the
+ambiguous case. To rebuild the main figure, install `docs/figure-requirements.txt`
+in a separate documentation environment and run `python docs/render_demo.py`.
+Rendering uses saved model outputs and does not rerun or change recognition.
 
 Source code is MIT-licensed. PaddleOCR model weights and RapidOCR are Apache-2.0;
 fonts and other dependencies retain their own licenses. Sources, weight hashes

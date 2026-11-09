@@ -1,0 +1,11 @@
+{
+  "input_sha256": "a2530dae07af392fef7c0cb95c668080e18c636a37891b885d13361ff995889e",
+  "prediction_record_sha256": "f3b3fd23ef4d08fb79217e97cca66d1e0340f8c230c2e9dc49b3876828646f63",
+  "crop_sha256": "420cdc987010db30f85b5d4f72f01a6b970d72c8e4c8e10d02f6114f8e2dde72",
+  "raw_text": "DX140765",
+  "text": "DX140765",
+  "score": 0.99987,
+  "catalog_status": "active",
+  "synthetic": true,
+  "changes": "Layout, image scaling and recorded polygon outline only; no prediction values changed"
+}
