@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "model_id": "ppocr-v5-en-wide-v2",
+  "detector": {
+    "path": "models/ppocr-v6-det-small.onnx",
+    "sha256": "090f04abcd9d9a7498bc4ebf677e4cb9bdce1fe4197ddb7e529f1ef44e1ff94f",
+    "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv6/det/PP-OCRv6_det_small.onnx",
+    "license": "Apache-2.0"
+  },
+  "recognizer": {
+    "path": "models/ppocr-v5-en-rec-mobile.onnx",
+    "sha256": "c3461add59bb4323ecba96a492ab75e06dda42467c9e3d0c18db5d1d21924be8",
+    "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv5/rec/en_PP-OCRv5_rec_mobile.onnx",
+    "license": "Apache-2.0",
+    "ocr_version": "PP-OCRv5",
+    "model_type": "mobile",
+    "language": "en"
+  },
+  "recognition_preprocess": "widen1.5",
+  "engine_parameters": {
+    "Det.limit_side_len": 736,
+    "Det.limit_type": "min",
+    "Det.thresh": 0.3,
+    "Det.box_thresh": 0.5,
+    "Det.unclip_ratio": 1.6,
+    "Det.use_dilation": true
+  },
+  "dictionary": "Unchanged ONNX embedded character metadata",
+  "raw_normalization": "none",
+  "source": "PaddleOCR weights converted to ONNX by RapidAI",
+  "selection_dataset": "legacy development, 1000 images; no candidate selected on held-out tests"
+}

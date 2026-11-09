@@ -1,0 +1,133 @@
+{
+  "acceptance_coverage": 0.0,
+  "acceptance_error": null,
+  "artifacts_saved": false,
+  "benchmark_version": "0.2.0",
+  "character_error_rate": 0.007717750826901874,
+  "counts": {
+    "accepted": 0,
+    "accepted_labeled": 0,
+    "character_edits": 7,
+    "characters": 907,
+    "exact": 83,
+    "failed": 0,
+    "format_decoded": 4,
+    "inputs": 200,
+    "processed": 200,
+    "raw_character_edits": 3,
+    "raw_exact": 87,
+    "readable": 90,
+    "valid_serial_exact": 0,
+    "valid_serial_inputs": 0,
+    "valid_serial_raw_exact": 0,
+    "wrong_accepted": 0
+  },
+  "decoder": "serial",
+  "environment": {
+    "cpu": "AMD Ryzen 7 5800X 8-Core Processor",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "device": "cpu",
+    "peak_process_rss_mb": 779.56640625,
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+    "python": "3.11.16",
+    "threads": 4,
+    "versions": {
+      "Pillow": "13.0.0",
+      "numpy": "2.4.6",
+      "onnxruntime": "1.31.1",
+      "opencv-python-headless": "5.0.0.93",
+      "rapidocr": "3.10.0"
+    }
+  },
+  "evaluated_inputs_sha256": "b4eb9fd7de7067f7b2f7587625979d557e5c37d05541067561cad8dce9e53f73",
+  "exact_match": 0.9222222222222223,
+  "failure_policy": "Failed readable inputs count as empty predictions.",
+  "identity": {
+    "catalog_sha256": "0bd048ffe2e0b7af802ac9ad6a5a4343842cf96373cbfde0b984ed9efda0bf35",
+    "decoder": "serial",
+    "model_fingerprint": "858f4721e571f89d79a04ecff2ab8df05638464d8fcbc14472d7f33318d936c5",
+    "pattern": "^[A-Z]{2}[0-9]{6}$"
+  },
+  "inference_ms": {
+    "mean": 170.08327842992003,
+    "p50": 169.2012130006333,
+    "p95": 182.73911264786875
+  },
+  "input_manifest_sha256": "40e3f96cceb61ca8b61ba4fe89a580e31d2f8dedc369364f87ad10cdf6bade2a",
+  "limit": null,
+  "model_id": "ppocr-v5-en-wide-v2",
+  "model_load_ms": 601.5904569976556,
+  "per_scenario": {
+    "ambiguous": {
+      "exact": 0,
+      "exact_match": null,
+      "failed": 0,
+      "inputs": 40,
+      "raw_exact": 0,
+      "readable": 0
+    },
+    "blank": {
+      "exact": 0,
+      "exact_match": null,
+      "failed": 0,
+      "inputs": 40,
+      "raw_exact": 0,
+      "readable": 0
+    },
+    "distractor": {
+      "exact": 39,
+      "exact_match": 0.975,
+      "failed": 0,
+      "inputs": 40,
+      "raw_exact": 39,
+      "readable": 40
+    },
+    "invalid_format": {
+      "exact": 44,
+      "exact_match": 0.88,
+      "failed": 0,
+      "inputs": 50,
+      "raw_exact": 48,
+      "readable": 50
+    },
+    "occluded": {
+      "exact": 0,
+      "exact_match": null,
+      "failed": 0,
+      "inputs": 30,
+      "raw_exact": 0,
+      "readable": 0
+    }
+  },
+  "policy_mode": "calibrated",
+  "raw_character_error_rate": 0.0033076074972436605,
+  "raw_exact_match": 0.9666666666666667,
+  "raw_normalization": "none",
+  "split": "test_negative",
+  "total_ms": {
+    "mean": 173.31914501010033,
+    "p50": 172.4259834991244,
+    "p95": 186.21972020046087
+  },
+  "valid_serial_exact_match": null,
+  "valid_serial_raw_exact_match": null,
+  "warmup": 3,
+  "warmup_requested": 3
+}

@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+build/
+dist/
+data/
+runs/
+.DS_Store
+PROGRESS.md
+reports/new-cli-*.json

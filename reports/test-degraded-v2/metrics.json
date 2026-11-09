@@ -1,0 +1,117 @@
+{
+  "acceptance_coverage": 0.7925,
+  "acceptance_error": 0.0,
+  "artifacts_saved": false,
+  "benchmark_version": "0.2.0",
+  "character_error_rate": 0.0,
+  "counts": {
+    "accepted": 317,
+    "accepted_labeled": 317,
+    "character_edits": 0,
+    "characters": 3200,
+    "exact": 400,
+    "failed": 0,
+    "format_decoded": 15,
+    "inputs": 400,
+    "processed": 400,
+    "raw_character_edits": 18,
+    "raw_exact": 385,
+    "readable": 400,
+    "valid_serial_exact": 400,
+    "valid_serial_inputs": 400,
+    "valid_serial_raw_exact": 385,
+    "wrong_accepted": 0
+  },
+  "decoder": "serial",
+  "environment": {
+    "cpu": "AMD Ryzen 7 5800X 8-Core Processor",
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "device": "cpu",
+    "peak_process_rss_mb": 362.3203125,
+    "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+    "python": "3.11.16",
+    "threads": 4,
+    "versions": {
+      "Pillow": "13.0.0",
+      "numpy": "2.4.6",
+      "onnxruntime": "1.31.1",
+      "opencv-python-headless": "5.0.0.93",
+      "rapidocr": "3.10.0"
+    }
+  },
+  "evaluated_inputs_sha256": "230583ddb86606af951db79f0c21e7bbbb50035bc9f4cfd92f444b159812cd68",
+  "exact_match": 1.0,
+  "failure_policy": "Failed readable inputs count as empty predictions.",
+  "identity": {
+    "catalog_sha256": "0bd048ffe2e0b7af802ac9ad6a5a4343842cf96373cbfde0b984ed9efda0bf35",
+    "decoder": "serial",
+    "model_fingerprint": "858f4721e571f89d79a04ecff2ab8df05638464d8fcbc14472d7f33318d936c5",
+    "pattern": "^[A-Z]{2}[0-9]{6}$"
+  },
+  "inference_ms": {
+    "mean": 174.19248261249777,
+    "p50": 171.2060810004914,
+    "p95": 198.4201839972229
+  },
+  "input_manifest_sha256": "984f3d48ff29a424877e002ba9141b077bb759f9887a0f89fcb4c5a54fd26160",
+  "limit": null,
+  "model_id": "ppocr-v5-en-wide-v2",
+  "model_load_ms": 571.4693429981708,
+  "per_scenario": {
+    "active": {
+      "exact": 320,
+      "exact_match": 1.0,
+      "failed": 0,
+      "inputs": 320,
+      "raw_exact": 305,
+      "readable": 320
+    },
+    "blocked": {
+      "exact": 40,
+      "exact_match": 1.0,
+      "failed": 0,
+      "inputs": 40,
+      "raw_exact": 40,
+      "readable": 40
+    },
+    "unknown": {
+      "exact": 40,
+      "exact_match": 1.0,
+      "failed": 0,
+      "inputs": 40,
+      "raw_exact": 40,
+      "readable": 40
+    }
+  },
+  "policy_mode": "calibrated",
+  "raw_character_error_rate": 0.005625,
+  "raw_exact_match": 0.9625,
+  "raw_normalization": "none",
+  "split": "test_degraded",
+  "total_ms": {
+    "mean": 177.4350039750243,
+    "p50": 174.38260550079576,
+    "p95": 201.5435267014254
+  },
+  "valid_serial_exact_match": 1.0,
+  "valid_serial_raw_exact_match": 0.9625,
+  "warmup": 3,
+  "warmup_requested": 3
+}

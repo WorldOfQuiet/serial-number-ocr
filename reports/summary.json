@@ -1,0 +1,115 @@
+{
+  "created_at": "2026-11-09T11:52:54.046451+00:00",
+  "conditions": {
+    "device": "cpu",
+    "threads": 4,
+    "batch_size": 1,
+    "warmup": 3,
+    "cpu": "AMD Ryzen 7 5800X 8-Core Processor",
+    "synthetic_fonts": 3,
+    "real_photographs": "not_evaluated"
+  },
+  "evaluation_freeze_sha256": "96df115d10cc5ae3fa4653332f8a6738266882d26031f6bce43e75eceabfffe4",
+  "splits": {
+    "test_clean": {
+      "counts": {
+        "accepted": 320,
+        "accepted_labeled": 320,
+        "character_edits": 0,
+        "characters": 3200,
+        "exact": 400,
+        "failed": 0,
+        "format_decoded": 23,
+        "inputs": 400,
+        "processed": 400,
+        "raw_character_edits": 24,
+        "raw_exact": 377,
+        "readable": 400,
+        "valid_serial_exact": 400,
+        "valid_serial_inputs": 400,
+        "valid_serial_raw_exact": 377,
+        "wrong_accepted": 0
+      },
+      "raw_exact_match": 0.9425,
+      "exact_match": 1.0,
+      "character_error_rate": 0.0,
+      "inference_ms": {
+        "mean": 169.86747742753323,
+        "p50": 167.07861200120533,
+        "p95": 190.37061010076286
+      },
+      "peak_process_rss_mb": 363.0625
+    },
+    "test_degraded": {
+      "counts": {
+        "accepted": 317,
+        "accepted_labeled": 317,
+        "character_edits": 0,
+        "characters": 3200,
+        "exact": 400,
+        "failed": 0,
+        "format_decoded": 15,
+        "inputs": 400,
+        "processed": 400,
+        "raw_character_edits": 18,
+        "raw_exact": 385,
+        "readable": 400,
+        "valid_serial_exact": 400,
+        "valid_serial_inputs": 400,
+        "valid_serial_raw_exact": 385,
+        "wrong_accepted": 0
+      },
+      "raw_exact_match": 0.9625,
+      "exact_match": 1.0,
+      "character_error_rate": 0.0,
+      "inference_ms": {
+        "mean": 174.19248261249777,
+        "p50": 171.2060810004914,
+        "p95": 198.4201839972229
+      },
+      "peak_process_rss_mb": 362.3203125
+    },
+    "test_negative": {
+      "counts": {
+        "accepted": 0,
+        "accepted_labeled": 0,
+        "character_edits": 7,
+        "characters": 907,
+        "exact": 83,
+        "failed": 0,
+        "format_decoded": 4,
+        "inputs": 200,
+        "processed": 200,
+        "raw_character_edits": 3,
+        "raw_exact": 87,
+        "readable": 90,
+        "valid_serial_exact": 0,
+        "valid_serial_inputs": 0,
+        "valid_serial_raw_exact": 0,
+        "wrong_accepted": 0
+      },
+      "raw_exact_match": 0.9666666666666667,
+      "exact_match": 0.9222222222222223,
+      "character_error_rate": 0.007717750826901874,
+      "inference_ms": {
+        "mean": 170.08327842992003,
+        "p50": 169.2012130006333,
+        "p95": 182.73911264786875
+      },
+      "peak_process_rss_mb": 779.56640625
+    }
+  },
+  "aggregate": {
+    "images": 1000,
+    "readable": 890,
+    "raw_exact": 849,
+    "exact": 883,
+    "valid_serial_images": 800,
+    "valid_serial_exact": 800,
+    "accepted": 637,
+    "wrong_accepted": 0,
+    "negative_cases": 200,
+    "negative_accepted": 0
+  },
+  "recomputed_from_csv": true
+}

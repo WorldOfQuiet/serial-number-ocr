@@ -1,0 +1,6 @@
+sample_id,image,split,expected_text,readable,scenario,eligible
+label,images/label.png,examples,DX140765,true,active,true
+prefix-zero,images/prefix-zero.png,examples,JO054740,true,active,true
+two-numbers,images/two-numbers.png,examples,,false,ambiguous,false
+blank,images/blank.png,examples,,false,blank,false
+invalid-format,images/invalid-format.png,examples,RX37O856,true,invalid_format,false

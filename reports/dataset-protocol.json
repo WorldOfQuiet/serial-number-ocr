@@ -1,0 +1,936 @@
+{
+  "artifacts": {
+    "calibration-contact-sheet.png": {
+      "path": "calibration-contact-sheet.png",
+      "sha256": "c6301bc4fdf8723290cff31ab700eac27054992bac26fcfaa70f985235105770"
+    },
+    "calibration.csv": {
+      "path": "calibration.csv",
+      "sha256": "1435a7010cab4ee3567c2cc0511db5e2ab663dcf0837974051386babf1053519"
+    },
+    "catalog.csv": {
+      "path": "catalog.csv",
+      "sha256": "0bd048ffe2e0b7af802ac9ad6a5a4343842cf96373cbfde0b984ed9efda0bf35"
+    },
+    "dataset.csv": {
+      "path": "dataset.csv",
+      "sha256": "87440f13dd302077376527efcd1d82fe03637564032fd50d043f7c5d74756750"
+    },
+    "manifest.jsonl": {
+      "path": "manifest.jsonl",
+      "sha256": "1fd5de5da1c1c62aa1415b79cca8bca2ee956a5c16c2b4bc0e290dda6cf5513a"
+    },
+    "pre-generation-declaration.json": {
+      "path": "pre-generation-declaration.json",
+      "sha256": "c70baba786dca21f97639c7f22cd8d3990f286ca7fcca9a20d90ab310fff1d2e"
+    },
+    "protocol.json": {
+      "path": "protocol.json",
+      "sha256": "ae51fa15a5254d8490d5028d371e0a37ff49e83dfe313d9d8aa8654cf5aecb81"
+    },
+    "recipe.json": {
+      "path": "recipe.json",
+      "sha256": "d76eef8fa0ea9258b2a10bb973189d5b1a0b662602fdb864876dff83374ff5e2"
+    },
+    "test_clean.csv": {
+      "path": "test_clean.csv",
+      "sha256": "464888a3b87523b5486c98f55d649972af5061c63a9353d3c6efd9364e501b58"
+    },
+    "test_degraded.csv": {
+      "path": "test_degraded.csv",
+      "sha256": "984f3d48ff29a424877e002ba9141b077bb759f9887a0f89fcb4c5a54fd26160"
+    },
+    "test_negative.csv": {
+      "path": "test_negative.csv",
+      "sha256": "40e3f96cceb61ca8b61ba4fe89a580e31d2f8dedc369364f87ad10cdf6bade2a"
+    }
+  },
+  "dataset_root": "data/new-protocol",
+  "definition": {
+    "catalog": "Contains active/blocked serials and all underlying ambiguous/occluded serials. Unknown, invalid, distractor and blank have no catalog entry. Only active is eligible.",
+    "common_rendering": {
+      "background_gray": [
+        180,
+        218
+      ],
+      "background_noise_sd": [
+        1.5,
+        4.0
+      ],
+      "bounds": "Integer bounds inclusive; real bounds half-open.",
+      "font_layout": "Pillow BASIC; centered glyph bounds; distractor font size capped at 42; ambiguous uses two centered lines at y=51 and y=129, font size capped at 38.",
+      "geometry": "Rotate label corners, add independently sampled per-corner XY jitter, project label and polygons with OpenCV homography; blend a warped mask.",
+      "image_format": "PNG RGB, compress_level=6, optimize=false",
+      "image_size": [
+        640,
+        320
+      ],
+      "label_center_jitter_px": [
+        -8,
+        8
+      ],
+      "label_rgb": "base in [236,249], RGB=(base,base-1,base-6)",
+      "label_size": [
+        480,
+        180
+      ],
+      "lighting_gradient_amplitude": [
+        -6,
+        6
+      ],
+      "noise": "NumPy PCG64 per-image texture seed; RGB Gaussian background and final sensor noise; explicit parameters saved in manifest.jsonl.",
+      "occlusion": "Label-colored rectangle hides the middle 27%-40% of the single rendered text width, including its full glyph height."
+    },
+    "distractors": "Unique INSPECTED, LOT, PASS, or QC OK followed by a random seven-digit number; preserved verbatim as readable expected_text.",
+    "files": {
+      "all_samples": "dataset.csv",
+      "catalog": "catalog.csv",
+      "design": "recipe.json",
+      "manifest": "manifest.jsonl",
+      "splits": {
+        "calibration": "calibration.csv",
+        "test_clean": "test_clean.csv",
+        "test_degraded": "test_degraded.csv",
+        "test_negative": "test_negative.csv"
+      },
+      "summary": "protocol.json"
+    },
+    "font_assignment": "Round-robin three fonts within each shuffled split, offset by split index; counts differ by at most one.",
+    "fonts": [
+      {
+        "file": "JetBrainsMono-Regular.ttf",
+        "license": "JetBrainsMono-OFL.txt",
+        "license_sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1"
+      },
+      {
+        "file": "DejaVuSansMono.ttf",
+        "license": "DejaVuSansMono-copyright.txt",
+        "license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+        "sha256": "a54dca07c76d6289e717e75e0a58c0128f6d7269ef3faf76417c9d7d3bba37ab"
+      },
+      {
+        "file": "LiberationMono-Regular.ttf",
+        "license": "LiberationMono-copyright.txt",
+        "license_sha256": "f32df582a2aab128c07b2f7e36e7b928dc5f6bd82657b905c04f91459f9e5cf9",
+        "sha256": "d18235f1e874771f4eaec3ddd6ddb4db849d334bdc6930c5c2185d9344834e62"
+      }
+    ],
+    "generator_sha256": "db36570c9b2ab1d615c77868266b40225516048792b651eef60af547757a4238",
+    "invalid_format": {
+      "calibration": {
+        "digit_in_prefix": 10,
+        "letter_in_digits": 10
+      },
+      "mutation": "Uniform uppercase A-Z in one of six digit positions, or uniform digit 0-9 in one of two letter positions; exactly one mutation, alternating kinds.",
+      "test_negative": {
+        "digit_in_prefix": 25,
+        "letter_in_digits": 25
+      }
+    },
+    "legacy_exclusion": {
+      "method": "Replay only initial serial creation from the published v1 generator. Reserve all serials, every position-4 O mutation, and INSPECTED 0..2799. Do not read v1 holdout rows, images, or predictions.",
+      "physical_label_count": 2800,
+      "protocol": "printed-serial-synthetic-v1",
+      "reserved_serial_count": 5600,
+      "reserved_text_count": 14000,
+      "reserved_texts_sha256": "17869d1b2b05df6db981b736c7698f462aaf9bb5d4053be5976062733e4a2451",
+      "seed": 314159,
+      "source_catalog_sha256": "18dadcf2f9f4972a3c08e3f4b514531a2dbbc9e94ded0329bdac5fb79b73c972",
+      "source_config_sha256": "08fc11c0500a0322bf0d4d25eb43f6663deb6564e9326e8b7ca639afa3675f09",
+      "source_generator_sha256": "68a7b617f802aa737fca85e51efe22b3ae618cd7053b427afa392661d9aa2b1b"
+    },
+    "protocol": "printed-serial-independent-synthetic-v2",
+    "real_photos": "not_evaluated",
+    "recipe_families": {
+      "clean": {
+        "angle_degrees": [
+          -5,
+          5
+        ],
+        "blur_sigma": [
+          0,
+          0.25
+        ],
+        "corner_jitter_px": 2,
+        "font_px": [
+          36,
+          54
+        ],
+        "ink": [
+          20,
+          65
+        ],
+        "sensor_noise_sd": [
+          0,
+          1.5
+        ]
+      },
+      "degraded_blur": {
+        "angle_degrees": [
+          -6,
+          6
+        ],
+        "blur_sigma": [
+          0.8,
+          1.3
+        ],
+        "corner_jitter_px": 5,
+        "font_px": [
+          34,
+          48
+        ],
+        "ink": [
+          30,
+          80
+        ],
+        "sensor_noise_sd": [
+          2,
+          5
+        ]
+      },
+      "degraded_low_contrast": {
+        "angle_degrees": [
+          -6,
+          6
+        ],
+        "blur_sigma": [
+          0.2,
+          0.6
+        ],
+        "corner_jitter_px": 5,
+        "font_px": [
+          34,
+          48
+        ],
+        "ink": [
+          125,
+          155
+        ],
+        "sensor_noise_sd": [
+          2,
+          5
+        ]
+      },
+      "degraded_noise": {
+        "angle_degrees": [
+          -6,
+          6
+        ],
+        "blur_sigma": [
+          0.1,
+          0.4
+        ],
+        "corner_jitter_px": 5,
+        "font_px": [
+          34,
+          48
+        ],
+        "ink": [
+          30,
+          80
+        ],
+        "sensor_noise_sd": [
+          8,
+          14
+        ]
+      },
+      "degraded_perspective": {
+        "angle_degrees": [
+          -9,
+          9
+        ],
+        "blur_sigma": [
+          0.2,
+          0.6
+        ],
+        "corner_jitter_px": 18,
+        "font_px": [
+          34,
+          48
+        ],
+        "ink": [
+          30,
+          80
+        ],
+        "sensor_noise_sd": [
+          2,
+          5
+        ]
+      },
+      "mild_blur": {
+        "angle_degrees": [
+          -5,
+          5
+        ],
+        "blur_sigma": [
+          0.5,
+          0.9
+        ],
+        "corner_jitter_px": 3,
+        "font_px": [
+          34,
+          50
+        ],
+        "ink": [
+          20,
+          70
+        ],
+        "sensor_noise_sd": [
+          0,
+          2
+        ]
+      },
+      "mild_low_contrast": {
+        "angle_degrees": [
+          -5,
+          5
+        ],
+        "blur_sigma": [
+          0,
+          0.3
+        ],
+        "corner_jitter_px": 3,
+        "font_px": [
+          34,
+          50
+        ],
+        "ink": [
+          115,
+          150
+        ],
+        "sensor_noise_sd": [
+          0,
+          2
+        ]
+      },
+      "mild_perspective": {
+        "angle_degrees": [
+          -8,
+          8
+        ],
+        "blur_sigma": [
+          0,
+          0.3
+        ],
+        "corner_jitter_px": 10,
+        "font_px": [
+          34,
+          50
+        ],
+        "ink": [
+          20,
+          70
+        ],
+        "sensor_noise_sd": [
+          0,
+          2
+        ]
+      },
+      "negative_clear": {
+        "angle_degrees": [
+          -5,
+          5
+        ],
+        "blur_sigma": [
+          0,
+          0.3
+        ],
+        "corner_jitter_px": 3,
+        "font_px": [
+          36,
+          52
+        ],
+        "ink": [
+          20,
+          65
+        ],
+        "sensor_noise_sd": [
+          0,
+          2
+        ]
+      }
+    },
+    "runtime": {
+      "freetype": "2.14.3",
+      "machine": "x86_64",
+      "numpy": "2.4.6",
+      "opencv": "5.0.0",
+      "pillow": "13.0.0",
+      "python": "3.11.16",
+      "zlib": "1.3.1"
+    },
+    "sample_csv_fields": [
+      "sample_id",
+      "image",
+      "split",
+      "expected_text",
+      "readable",
+      "scenario",
+      "eligible"
+    ],
+    "seed": 20261109,
+    "selection_policy": {
+      "calibration": "Select OCR preprocessing and acceptance thresholds on calibration only.",
+      "claims": "Procedural images are not evidence of accuracy on real photographs.",
+      "immutable_outputs": "Existing output directories are refused. A revised recipe requires a new protocol and new held-out data.",
+      "readability": "Readability is assigned by controlled generation, not inferred from OCR success. Ambiguous has two independently readable serials but no unique target; occluded hides central glyphs.",
+      "recipe_fixed_before_inference": true,
+      "tests": "Freeze the OCR model, preprocessing, candidate rule, and thresholds before any test inference. Never select parameters on test results."
+    },
+    "serial_format": "^[A-Z]{2}[0-9]{6}$",
+    "split_assignment": "Fixed scenario counts, independently shuffled within each split; each physical label and rendered nonempty string belongs to exactly one split.",
+    "split_counts": {
+      "calibration": {
+        "active": 280,
+        "ambiguous": 10,
+        "blank": 10,
+        "blocked": 20,
+        "distractor": 10,
+        "invalid_format": 20,
+        "occluded": 10,
+        "unknown": 40
+      },
+      "test_clean": {
+        "active": 320,
+        "blocked": 40,
+        "unknown": 40
+      },
+      "test_degraded": {
+        "active": 320,
+        "blocked": 40,
+        "unknown": 40
+      },
+      "test_negative": {
+        "ambiguous": 40,
+        "blank": 40,
+        "distractor": 40,
+        "invalid_format": 50,
+        "occluded": 30
+      }
+    },
+    "split_recipe_assignment": {
+      "calibration": [
+        "clean",
+        "mild_perspective",
+        "mild_low_contrast",
+        "mild_blur"
+      ],
+      "test_clean": [
+        "clean"
+      ],
+      "test_degraded": [
+        "degraded_blur",
+        "degraded_noise",
+        "degraded_perspective",
+        "degraded_low_contrast"
+      ],
+      "test_negative": [
+        "negative_clear"
+      ]
+    },
+    "synthetic_only": true,
+    "total_images": 1400
+  },
+  "font_counts": {
+    "calibration": {
+      "DejaVuSansMono.ttf": 133,
+      "JetBrainsMono-Regular.ttf": 134,
+      "LiberationMono-Regular.ttf": 133
+    },
+    "test_clean": {
+      "DejaVuSansMono.ttf": 134,
+      "JetBrainsMono-Regular.ttf": 133,
+      "LiberationMono-Regular.ttf": 133
+    },
+    "test_degraded": {
+      "DejaVuSansMono.ttf": 133,
+      "JetBrainsMono-Regular.ttf": 133,
+      "LiberationMono-Regular.ttf": 134
+    },
+    "test_negative": {
+      "DejaVuSansMono.ttf": 67,
+      "JetBrainsMono-Regular.ttf": 67,
+      "LiberationMono-Regular.ttf": 66
+    }
+  },
+  "pre_generation_declaration": {
+    "payload": {
+      "catalog": "Contains active/blocked serials and all underlying ambiguous/occluded serials. Unknown, invalid, distractor and blank have no catalog entry. Only active is eligible.",
+      "catalog_exclusion_verification": {
+        "all_serials_in_reserved_universe": true,
+        "catalog_rows": 2310,
+        "catalog_sha256": "18dadcf2f9f4972a3c08e3f4b514531a2dbbc9e94ded0329bdac5fb79b73c972",
+        "old_holdout_rows_read": false
+      },
+      "common_rendering": {
+        "background_gray": [
+          180,
+          218
+        ],
+        "background_noise_sd": [
+          1.5,
+          4.0
+        ],
+        "bounds": "Integer bounds inclusive; real bounds half-open.",
+        "font_layout": "Pillow BASIC; centered glyph bounds; distractor font size capped at 42; ambiguous uses two centered lines at y=51 and y=129, font size capped at 38.",
+        "geometry": "Rotate label corners, add independently sampled per-corner XY jitter, project label and polygons with OpenCV homography; blend a warped mask.",
+        "image_format": "PNG RGB, compress_level=6, optimize=false",
+        "image_size": [
+          640,
+          320
+        ],
+        "label_center_jitter_px": [
+          -8,
+          8
+        ],
+        "label_rgb": "base in [236,249], RGB=(base,base-1,base-6)",
+        "label_size": [
+          480,
+          180
+        ],
+        "lighting_gradient_amplitude": [
+          -6,
+          6
+        ],
+        "noise": "NumPy PCG64 per-image texture seed; RGB Gaussian background and final sensor noise; explicit parameters saved in manifest.jsonl.",
+        "occlusion": "Label-colored rectangle hides the middle 27%-40% of the single rendered text width, including its full glyph height."
+      },
+      "dataset_root": "data/new-protocol",
+      "distractors": "Unique INSPECTED, LOT, PASS, or QC OK followed by a random seven-digit number; preserved verbatim as readable expected_text.",
+      "files": {
+        "all_samples": "dataset.csv",
+        "catalog": "catalog.csv",
+        "design": "recipe.json",
+        "manifest": "manifest.jsonl",
+        "splits": {
+          "calibration": "calibration.csv",
+          "test_clean": "test_clean.csv",
+          "test_degraded": "test_degraded.csv",
+          "test_negative": "test_negative.csv"
+        },
+        "summary": "protocol.json"
+      },
+      "font_assignment": "Round-robin three fonts within each shuffled split, offset by split index; counts differ by at most one.",
+      "fonts": [
+        {
+          "file": "JetBrainsMono-Regular.ttf",
+          "license": "JetBrainsMono-OFL.txt",
+          "license_sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+          "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1"
+        },
+        {
+          "file": "DejaVuSansMono.ttf",
+          "license": "DejaVuSansMono-copyright.txt",
+          "license_sha256": "63d3ba759d12804c5b31a9d5940d855c1820d1f5999e6b0872eb1c7ff045fbc9",
+          "sha256": "a54dca07c76d6289e717e75e0a58c0128f6d7269ef3faf76417c9d7d3bba37ab"
+        },
+        {
+          "file": "LiberationMono-Regular.ttf",
+          "license": "LiberationMono-copyright.txt",
+          "license_sha256": "f32df582a2aab128c07b2f7e36e7b928dc5f6bd82657b905c04f91459f9e5cf9",
+          "sha256": "d18235f1e874771f4eaec3ddd6ddb4db849d334bdc6930c5c2185d9344834e62"
+        }
+      ],
+      "generator_sha256": "db36570c9b2ab1d615c77868266b40225516048792b651eef60af547757a4238",
+      "invalid_format": {
+        "calibration": {
+          "digit_in_prefix": 10,
+          "letter_in_digits": 10
+        },
+        "mutation": "Uniform uppercase A-Z in one of six digit positions, or uniform digit 0-9 in one of two letter positions; exactly one mutation, alternating kinds.",
+        "test_negative": {
+          "digit_in_prefix": 25,
+          "letter_in_digits": 25
+        }
+      },
+      "legacy_exclusion": {
+        "method": "Replay only initial serial creation from the published v1 generator. Reserve all serials, every position-4 O mutation, and INSPECTED 0..2799. Do not read v1 holdout rows, images, or predictions.",
+        "physical_label_count": 2800,
+        "protocol": "printed-serial-synthetic-v1",
+        "reserved_serial_count": 5600,
+        "reserved_text_count": 14000,
+        "reserved_texts_sha256": "17869d1b2b05df6db981b736c7698f462aaf9bb5d4053be5976062733e4a2451",
+        "seed": 314159,
+        "source_catalog_sha256": "18dadcf2f9f4972a3c08e3f4b514531a2dbbc9e94ded0329bdac5fb79b73c972",
+        "source_config_sha256": "08fc11c0500a0322bf0d4d25eb43f6663deb6564e9326e8b7ca639afa3675f09",
+        "source_generator_sha256": "68a7b617f802aa737fca85e51efe22b3ae618cd7053b427afa392661d9aa2b1b"
+      },
+      "protocol": "printed-serial-independent-synthetic-v2",
+      "real_photos": "not_evaluated",
+      "recipe_families": {
+        "clean": {
+          "angle_degrees": [
+            -5,
+            5
+          ],
+          "blur_sigma": [
+            0,
+            0.25
+          ],
+          "corner_jitter_px": 2,
+          "font_px": [
+            36,
+            54
+          ],
+          "ink": [
+            20,
+            65
+          ],
+          "sensor_noise_sd": [
+            0,
+            1.5
+          ]
+        },
+        "degraded_blur": {
+          "angle_degrees": [
+            -6,
+            6
+          ],
+          "blur_sigma": [
+            0.8,
+            1.3
+          ],
+          "corner_jitter_px": 5,
+          "font_px": [
+            34,
+            48
+          ],
+          "ink": [
+            30,
+            80
+          ],
+          "sensor_noise_sd": [
+            2,
+            5
+          ]
+        },
+        "degraded_low_contrast": {
+          "angle_degrees": [
+            -6,
+            6
+          ],
+          "blur_sigma": [
+            0.2,
+            0.6
+          ],
+          "corner_jitter_px": 5,
+          "font_px": [
+            34,
+            48
+          ],
+          "ink": [
+            125,
+            155
+          ],
+          "sensor_noise_sd": [
+            2,
+            5
+          ]
+        },
+        "degraded_noise": {
+          "angle_degrees": [
+            -6,
+            6
+          ],
+          "blur_sigma": [
+            0.1,
+            0.4
+          ],
+          "corner_jitter_px": 5,
+          "font_px": [
+            34,
+            48
+          ],
+          "ink": [
+            30,
+            80
+          ],
+          "sensor_noise_sd": [
+            8,
+            14
+          ]
+        },
+        "degraded_perspective": {
+          "angle_degrees": [
+            -9,
+            9
+          ],
+          "blur_sigma": [
+            0.2,
+            0.6
+          ],
+          "corner_jitter_px": 18,
+          "font_px": [
+            34,
+            48
+          ],
+          "ink": [
+            30,
+            80
+          ],
+          "sensor_noise_sd": [
+            2,
+            5
+          ]
+        },
+        "mild_blur": {
+          "angle_degrees": [
+            -5,
+            5
+          ],
+          "blur_sigma": [
+            0.5,
+            0.9
+          ],
+          "corner_jitter_px": 3,
+          "font_px": [
+            34,
+            50
+          ],
+          "ink": [
+            20,
+            70
+          ],
+          "sensor_noise_sd": [
+            0,
+            2
+          ]
+        },
+        "mild_low_contrast": {
+          "angle_degrees": [
+            -5,
+            5
+          ],
+          "blur_sigma": [
+            0,
+            0.3
+          ],
+          "corner_jitter_px": 3,
+          "font_px": [
+            34,
+            50
+          ],
+          "ink": [
+            115,
+            150
+          ],
+          "sensor_noise_sd": [
+            0,
+            2
+          ]
+        },
+        "mild_perspective": {
+          "angle_degrees": [
+            -8,
+            8
+          ],
+          "blur_sigma": [
+            0,
+            0.3
+          ],
+          "corner_jitter_px": 10,
+          "font_px": [
+            34,
+            50
+          ],
+          "ink": [
+            20,
+            70
+          ],
+          "sensor_noise_sd": [
+            0,
+            2
+          ]
+        },
+        "negative_clear": {
+          "angle_degrees": [
+            -5,
+            5
+          ],
+          "blur_sigma": [
+            0,
+            0.3
+          ],
+          "corner_jitter_px": 3,
+          "font_px": [
+            36,
+            52
+          ],
+          "ink": [
+            20,
+            65
+          ],
+          "sensor_noise_sd": [
+            0,
+            2
+          ]
+        }
+      },
+      "runtime": {
+        "freetype": "2.14.3",
+        "machine": "x86_64",
+        "numpy": "2.4.6",
+        "opencv": "5.0.0",
+        "pillow": "13.0.0",
+        "python": "3.11.16",
+        "zlib": "1.3.1"
+      },
+      "sample_csv_fields": [
+        "sample_id",
+        "image",
+        "split",
+        "expected_text",
+        "readable",
+        "scenario",
+        "eligible"
+      ],
+      "seed": 20261109,
+      "selection_policy": {
+        "calibration": "Select OCR preprocessing and acceptance thresholds on calibration only.",
+        "claims": "Procedural images are not evidence of accuracy on real photographs.",
+        "immutable_outputs": "Existing output directories are refused. A revised recipe requires a new protocol and new held-out data.",
+        "readability": "Readability is assigned by controlled generation, not inferred from OCR success. Ambiguous has two independently readable serials but no unique target; occluded hides central glyphs.",
+        "recipe_fixed_before_inference": true,
+        "tests": "Freeze the OCR model, preprocessing, candidate rule, and thresholds before any test inference. Never select parameters on test results."
+      },
+      "serial_format": "^[A-Z]{2}[0-9]{6}$",
+      "split_assignment": "Fixed scenario counts, independently shuffled within each split; each physical label and rendered nonempty string belongs to exactly one split.",
+      "split_counts": {
+        "calibration": {
+          "active": 280,
+          "ambiguous": 10,
+          "blank": 10,
+          "blocked": 20,
+          "distractor": 10,
+          "invalid_format": 20,
+          "occluded": 10,
+          "unknown": 40
+        },
+        "test_clean": {
+          "active": 320,
+          "blocked": 40,
+          "unknown": 40
+        },
+        "test_degraded": {
+          "active": 320,
+          "blocked": 40,
+          "unknown": 40
+        },
+        "test_negative": {
+          "ambiguous": 40,
+          "blank": 40,
+          "distractor": 40,
+          "invalid_format": 50,
+          "occluded": 30
+        }
+      },
+      "split_recipe_assignment": {
+        "calibration": [
+          "clean",
+          "mild_perspective",
+          "mild_low_contrast",
+          "mild_blur"
+        ],
+        "test_clean": [
+          "clean"
+        ],
+        "test_degraded": [
+          "degraded_blur",
+          "degraded_noise",
+          "degraded_perspective",
+          "degraded_low_contrast"
+        ],
+        "test_negative": [
+          "negative_clear"
+        ]
+      },
+      "status": "recipe_frozen_before_generation_and_inference",
+      "synthetic_only": true,
+      "total_images": 1400
+    },
+    "sha256": "c70baba786dca21f97639c7f22cd8d3990f286ca7fcca9a20d90ab310fff1d2e"
+  },
+  "protocol": "printed-serial-independent-synthetic-v2",
+  "quality_control": {
+    "calibration_contact_sheet_visually_inspected": true,
+    "test_predictions_accessed": false,
+    "test_visual_results_used_for_recipe_selection": false,
+    "unit_tests": "11 passed"
+  },
+  "real_photos": "not_evaluated",
+  "recipe_counts": {
+    "calibration": {
+      "clean": 100,
+      "mild_blur": 100,
+      "mild_low_contrast": 100,
+      "mild_perspective": 100
+    },
+    "test_clean": {
+      "clean": 400
+    },
+    "test_degraded": {
+      "degraded_blur": 100,
+      "degraded_low_contrast": 100,
+      "degraded_noise": 100,
+      "degraded_perspective": 100
+    },
+    "test_negative": {
+      "negative_clear": 200
+    }
+  },
+  "recipe_sha256": "d76eef8fa0ea9258b2a10bb973189d5b1a0b662602fdb864876dff83374ff5e2",
+  "seed": 20261109,
+  "synthetic_only": true,
+  "validation": {
+    "all_image_hashes_verified": true,
+    "catalog_size": 1160,
+    "cross_split_physical_overlap": 0,
+    "cross_split_text_overlap": 0,
+    "image_bytes": 427150814,
+    "image_files": 1400,
+    "input_loader_roundtrip_all_splits": true,
+    "legacy_reserved_text_overlap": 0,
+    "ocr_executed_for_generation": false,
+    "old_holdout_rows_read": false,
+    "physical_labels": 1400,
+    "replay": {
+      "identical_png_and_polygons": true,
+      "sample_id": "2cfbd79bcff2d15b1126dd61",
+      "sha256": "9c65ee99767eb25d93f66589ee822da93b5a7e027f5ee6cb1a0ad7c55bb319fa"
+    },
+    "samples": 1400,
+    "saved_csv_manifest_agreement": true,
+    "source_catalog_rows_reserved": 2310,
+    "split_counts": {
+      "calibration": {
+        "active": 280,
+        "ambiguous": 10,
+        "blank": 10,
+        "blocked": 20,
+        "distractor": 10,
+        "invalid_format": 20,
+        "occluded": 10,
+        "unknown": 40
+      },
+      "test_clean": {
+        "active": 320,
+        "blocked": 40,
+        "unknown": 40
+      },
+      "test_degraded": {
+        "active": 320,
+        "blocked": 40,
+        "unknown": 40
+      },
+      "test_negative": {
+        "ambiguous": 40,
+        "blank": 40,
+        "distractor": 40,
+        "invalid_format": 50,
+        "occluded": 30
+      }
+    },
+    "unique_rendered_texts": 1400
+  }
+}

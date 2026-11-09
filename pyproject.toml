@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "marking-ocr"
+version = "0.2.0"
+description = "Batch OCR and catalog validation for printed serial numbers"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "licenses/*", "src/marking_ocr/resources/fonts/*.txt"]
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "rapidocr==3.10.0", "onnxruntime==1.31.1", "numpy==2.4.6",
+  "opencv-python-headless==5.0.0.93", "Pillow==13.0.0", "psutil>=6,<8",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+marking-ocr = "marking_ocr.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+marking_ocr = ["resources/*", "resources/models/*", "resources/fonts/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

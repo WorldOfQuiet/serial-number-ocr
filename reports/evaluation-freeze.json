@@ -1,0 +1,19 @@
+{
+  "frozen_at": "2026-11-09T11:39:06.032668+00:00",
+  "model_freeze_sha256": "6a7427efef726db9680e40811f37b639981a834360d749470e74785d1f528007",
+  "policy_sha256": "2f10df43c0357b7e8bcd16bebec538c45278291c8b06e1692705f23fe45c082e",
+  "threshold": 0.94701,
+  "identity": {
+    "catalog_sha256": "0bd048ffe2e0b7af802ac9ad6a5a4343842cf96373cbfde0b984ed9efda0bf35",
+    "decoder": "serial",
+    "model_fingerprint": "858f4721e571f89d79a04ecff2ab8df05638464d8fcbc14472d7f33318d936c5",
+    "pattern": "^[A-Z]{2}[0-9]{6}$"
+  },
+  "protocol_sha256": "ae51fa15a5254d8490d5028d371e0a37ff49e83dfe313d9d8aa8654cf5aecb81",
+  "splits": {
+    "test_clean": "464888a3b87523b5486c98f55d649972af5061c63a9353d3c6efd9364e501b58",
+    "test_degraded": "984f3d48ff29a424877e002ba9141b077bb759f9887a0f89fcb4c5a54fd26160",
+    "test_negative": "40e3f96cceb61ca8b61ba4fe89a580e31d2f8dedc369364f87ad10cdf6bade2a"
+  },
+  "evaluation_rule": "No further model, preprocessing, decoder or threshold selection after this point."
+}

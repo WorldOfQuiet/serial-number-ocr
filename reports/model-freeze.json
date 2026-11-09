@@ -1,0 +1,27 @@
+{
+  "release": "marking-ocr-v2",
+  "frozen_at": "2026-11-09T11:36:34.352572+00:00",
+  "model_fingerprint": "858f4721e571f89d79a04ecff2ab8df05638464d8fcbc14472d7f33318d936c5",
+  "decoder": "serial",
+  "selection": "Only legacy development used for model/preprocessing selection. New test splits have not been inferred.",
+  "sha256": {
+    "src/marking_ocr/engine.py": "8225ed5e56ebe205834689f5f6df17ea9f97cc14a238527a49ea559d28f7b8ae",
+    "src/marking_ocr/policy.py": "f8807598a32cc3c590931fa72639ba079a1cdf7c8bdbdb5b3a1c71568d8fa023",
+    "src/marking_ocr/metrics.py": "844cb57c977f2868c4ed91e1fe7fc7b8dd859269415758c1d89de29138058eb4",
+    "src/marking_ocr/cli.py": "e19ad44d856769f000eba5ae61700ff2e7ecd257a9768e6f0fefcf78f4c2b0f3",
+    "src/marking_ocr/io.py": "ebb949530e935a9a7479fe66272ccced8d7bc1c8f3d4f2ff64e0b7444838057d",
+    "src/marking_ocr/synthesis.py": "db36570c9b2ab1d615c77868266b40225516048792b651eef60af547757a4238",
+    "src/marking_ocr/resources/model.json": "46cdf063c9fb96f8d5eed1440a95e69f808b65e917fff88afb59cea4aed24a97",
+    "uv.lock": "c9840882e8061235b3642da5b63eafc34b771e9f37082310b3cdd943131b4ffa",
+    "data/new-protocol/manifest.jsonl": "1fd5de5da1c1c62aa1415b79cca8bca2ee956a5c16c2b4bc0e290dda6cf5513a",
+    "data/new-protocol/catalog.csv": "0bd048ffe2e0b7af802ac9ad6a5a4343842cf96373cbfde0b984ed9efda0bf35",
+    "data/new-protocol/recipe.json": "d76eef8fa0ea9258b2a10bb973189d5b1a0b662602fdb864876dff83374ff5e2"
+  },
+  "evaluation_splits": [
+    "test_clean",
+    "test_degraded",
+    "test_negative"
+  ],
+  "calibration_split": "calibration",
+  "policy_pending": true
+}

@@ -1,0 +1,23 @@
+{
+  "tests": {
+    "command": "python -m pytest -q",
+    "passed": 37,
+    "failed": 0
+  },
+  "build": {
+    "wheel": true,
+    "sdist": true
+  },
+  "isolated_wheel": {
+    "installed_outside_checkout": true,
+    "bundled_models_verified": true,
+    "python_network_calls_disabled": true,
+    "network_calls": 0,
+    "raw_text": "DX140765",
+    "vision_portfolio_importable": false,
+    "torch_importable": false
+  },
+  "frozen_core_unchanged_after_evaluation": true,
+  "overlay_alpha_changes_only_visual_output": true,
+  "holdout_counts_recomputed_from_csv": true
+}

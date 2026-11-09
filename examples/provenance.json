@@ -1,0 +1,42 @@
+[
+  {
+    "file": "images/label.png",
+    "source_sample_id": "956e6b5755a8a7d8f09f81e6",
+    "source_split": "development",
+    "sha256": "a2530dae07af392fef7c0cb95c668080e18c636a37891b885d13361ff995889e",
+    "render_recipe": "clean",
+    "synthetic": true
+  },
+  {
+    "file": "images/prefix-zero.png",
+    "source_sample_id": "03ec66a6f2c994dca10f51b5",
+    "source_split": "development",
+    "sha256": "15c4319907063df2151a7cf22399b2bfac70914831f3255e99a8f92808ff5d86",
+    "render_recipe": "blur",
+    "synthetic": true
+  },
+  {
+    "file": "images/two-numbers.png",
+    "source_sample_id": "0f413c54ed3bdfded9058fee",
+    "source_split": "development",
+    "sha256": "a1d5e155aa78e17721bf07cff66643a81bff3a39426e5209010784840faed6aa",
+    "render_recipe": "blur",
+    "synthetic": true
+  },
+  {
+    "file": "images/blank.png",
+    "source_sample_id": "d2b83e3d1910113b1c2957a7",
+    "source_split": "development",
+    "sha256": "450b369b30384255b97c9a965b0f31a256b0d93ca11dc454c2155c8844015985",
+    "render_recipe": "clean",
+    "synthetic": true
+  },
+  {
+    "file": "images/invalid-format.png",
+    "source_sample_id": "4f05db5ee32e1d29112f2fee",
+    "source_split": "development",
+    "sha256": "1218f8d8abb1775a41df327f0140c96df4b8ed43f93cff0f2e92137e0ca0d7fa",
+    "render_recipe": "low_contrast",
+    "synthetic": true
+  }
+]
